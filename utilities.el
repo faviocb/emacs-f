@@ -56,4 +56,12 @@
 ;;(define-key sh-mode-map [(control ?j)] 'sh-send-line-or-region-and-step)
 ;;(define-key sh-mode-map [(control ?c) (control ?z)] 'sh-switch-to-process-buffer)
 
+
+;;----------------------------------------------------------------------------------------
+
+    (defun kill-other-buffers ()
+      "Kill all other buffers."
+      (interactive)
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
 ;;-----------------------------------------------------------------------
