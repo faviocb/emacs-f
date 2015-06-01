@@ -65,3 +65,67 @@
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
 ;;-----------------------------------------------------------------------
+
+
+(defun fbash ()
+
+  (interactive)
+
+  (find-file (concat "/"  f-gnu-user "@" f-gnu-host ":")) ;;  /username@hostname:
+  (setq explicit-shell-file-name "/bin/bash")
+  (shell)
+  (message "GNU :)")
+  )
+
+
+
+     
+      
+
+;;---------------------------------------------------------------------------------------
+
+(defun fpython ()
+
+  (interactive)
+  (fbash)
+  (process-send-string nil "python \n")
+  )
+
+;;---------------------------------------------------------------------------------------
+
+(defun fvb()
+  (interactive)
+  (shell-command (concat "VBoxManage.exe startvm " f-virtual-machine))
+    (kill-other-buffers)
+  )
+
+;;---------------------------------------------------------------------------------------
+
+(defun fpsql ()
+
+  (interactive)
+
+  (setq sql-postgres-login-params
+      '((user :default f-pgsql-user)
+        (database :default f-pgsql-database)
+        (server :default f-pgsql-server)
+        (port :default f-pgsql-port)))
+
+  (sql-postgres)
+
+)
+
+;;---------------------------------------------------------------------------------------
+
+
+(defun fcsc()
+  (interactive)
+  (setq texto (buffer-string))
+  (write-region texto nil "emacs-fcsc-temp-delete.cs")
+    (shell-command "csc.exe /target:exe  emacs-fcsc-temp-delete.cs & emacs-fcsc-temp-delete.exe & del emacs-fcsc-temp-delete.exe & del emacs-fcsc-temp-delete.cs")
+  )
+
+
+;;---------------------------------------------------------------------------------------
+
+

@@ -1,23 +1,34 @@
-(defun init ( )
+(defun init ()
 
 ;;======================================================
 ;;====================== per user ======================
 ;;======================================================
 
-;;----------------------------------------- empty message --------------------------------
-;;TODO
+;;----------------------------------------- default directory --------------------------------
+
+(cd f-default-dir)  
 
 
-;;------------------------------------------ load Utilities -----------------------------------
-(load "utilities.el ")
+;;------------------------ environment variables within emacs without setting them in the OS ------------------
 
-;;------------------------------------------ environment variable emacs only -----------------------------------
-;;TODO
 
+(setenv "PATH"
+  (concat
+   f-path-putty ";"
+   f-path-virtualbox ";"
+   f-path-psql ";"
+   f-path-dotnetframework ";"
+   f-path-curl ";"
+   (getenv "PATH")
+  )
+)
 
 ;;====================================================
 ;;====================== Common ======================
 ;;====================================================
+
+;;------------------------------------------ load Utilities -----------------------------------
+(load "utilities.el ")
 
 ;;----------------------------------------- start emacs-server  --------------------------------
 
@@ -33,6 +44,15 @@
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   )
+
+;;----------------------------------------- tramp / putty plink --------------------------------
+ 
+(require 'tramp)
+(setq tramp-default-method "plink")
+
+;;------------------------------------------ remote shell windows --> GNU/linux -------------------------
+
+;;(setq explicit-shell-file-name "/bin/bash")
 
 
 ;;----------------------------------------- font --------------------------------
@@ -51,7 +71,8 @@
 ;;----------------------------------------- no toolbar --------------------------------
 (tool-bar-mode 0)
 
-
+;;------------------------------------  Don't let Emacs hurt your ears ----------------------
+(setq visible-bell t)
 
 ;;======================================================
 ;;======================  notes   ======================
@@ -74,8 +95,6 @@
 ;; Prevent the cursor from blinking
 ;;(blink-cursor-mode 0)
 
-;; Don't let Emacs hurt your ears
-;;(setq visible-bell t)
 
 ;;---------------------------------------- UPPERCASE / lowercase? ----------------------
 
@@ -96,8 +115,23 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
+;;---------------------------- cursor  -------------------------
 
+(setq-default cursor-type 'bar) 
 
+;;---------------------------- nodejs prompt  -------------------------
+;; http://stackoverflow.com/questions/13862471/using-node-js-with-js-comint-in-emacs
 
+;;(setq inferior-js-mode-hook
+;;      (lambda ()
+;;        ;; We like nice colors
+;;        (ansi-color-for-comint-mode-on)
+;;        ;; Deal with some prompt nonsense
+;;        (add-to-list
+;;         'comint-preoutput-filter-functions
+;;         (lambda (output)
+;;           (replace-regexp-in-string "\033\\[[0-9]+[GK]" "" output)))))
+
+;;-------------------------------
 
 )
