@@ -45,6 +45,8 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   )
 
+
+
 ;;----------------------------------------- tramp / putty plink --------------------------------
  
 (require 'tramp)
@@ -53,6 +55,11 @@
 ;;------------------------------------------ remote shell windows --> GNU/linux -------------------------
 
 ;;(setq explicit-shell-file-name "/bin/bash")
+
+;;-------------------------  themes ----------------------------
+    (require 'color-theme)
+    (color-theme-initialize)
+    (color-theme-charcoal-black)
 
 
 ;;----------------------------------------- font --------------------------------
@@ -117,7 +124,8 @@
 
 ;;---------------------------- cursor  -------------------------
 
-(setq-default cursor-type 'bar) 
+(setq-default cursor-type 'bar)
+
 
 ;;---------------------------- nodejs prompt  -------------------------
 ;; http://stackoverflow.com/questions/13862471/using-node-js-with-js-comint-in-emacs
