@@ -1,4 +1,4 @@
-(defun init ()
+(defun init-common ()
 
 ;;======================================================
 ;;====================== per user ======================
@@ -28,14 +28,8 @@
 ;;====================================================
 
 ;;------------------------------------------ load Utilities -----------------------------------
-(load "utilities.el ")
+(load "utilities.el")
 
-;;----------------------------------------- start emacs-server  --------------------------------
-
-(server-start)
-
-;; M-x server-star
-;; http://stackoverflow.com/questions/455077/how-to-create-a-right-click-context-shell-shortcut-edit-with-emacs
 
 ;;----------------------------------------- melpa --------------------------------
 
@@ -47,14 +41,7 @@
 
 
 
-;;----------------------------------------- tramp / putty plink --------------------------------
- 
-(require 'tramp)
-(setq tramp-default-method "plink")
 
-;;------------------------------------------ remote shell windows --> GNU/linux -------------------------
-
-;;(setq explicit-shell-file-name "/bin/bash")
 
 ;;-------------------------  themes ----------------------------
     (require 'color-theme)
@@ -62,12 +49,7 @@
     (color-theme-charcoal-black)
 
 
-;;----------------------------------------- font --------------------------------
 
-(set-face-attribute 'default nil :height 100)
-
-(set-face-attribute 'default nil :font  "Consolas" )
-(set-frame-font   "Consolas" nil t)
 
 
 ;;----------------------------------------- empty scratch  and no startup --------------------------------
@@ -140,6 +122,5 @@
 ;;         (lambda (output)
 ;;           (replace-regexp-in-string "\033\\[[0-9]+[GK]" "" output)))))
 
-;;-------------------------------
 
 )

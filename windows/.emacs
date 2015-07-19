@@ -1,7 +1,7 @@
 ;; move this file to "C:\Users\<username>\AppData\Roaming"
 
 ;;----------------------------------------- empty message --------------------------------
-(setq inhibit-startup-echo-area-message "windowsusername")
+(setq inhibit-startup-echo-area-message "<username>")
 
 (setq f-virtual-machine "debianWin")
 
@@ -24,5 +24,9 @@
 
 
 (setq load-path (append load-path (list "C:\\Users\\<username>\\Documents\\git-repos\\emacs-f")))
-(load "init.el ")
-(init)
+(load "init-common.el")
+(init-common)
+
+(setq load-path (append load-path (list "C:\\Users\\<username>\\Documents\\git-repos\\emacs-f\\windows")))
+(load "init-windows.el")
+(init-windows)
