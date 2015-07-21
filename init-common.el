@@ -103,6 +103,11 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;;-------------- Markdown processor of choice ------------
+
+(custom-set-variables
+ '(markdown-command "commonmark"))
+
 
 ;;---------------------------- cursor  -------------------------
 
